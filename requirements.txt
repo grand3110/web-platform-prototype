@@ -10,6 +10,9 @@ pydotplus
 django-trackstats
 django-taggit
 django-allauth
+django-filter
 django-filters
 psycopg2-binary
 django-bootstrap-form
+pygithub
+markdown2
