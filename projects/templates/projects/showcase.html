@@ -17,17 +17,11 @@
 <div class="row">
     <div class="col-sm" style="flex-grow: 5">
         <div class="card project-readme card-no-border">
-            <h2>Project Description</h2>
             <div class="readme-card-body">
-                <p class="lead">{{ current_project.caption }}</p>
-                <p class="card-text text-primary">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                    officia deserunt mollit anim id est eopksio laborum. Sed ut perspiciatis unde omnis istpoe natus
-                    error sit voluptatem accusantium doloremque eopsloi laudantium, totam rem aperiam, eaque ipsa quae
-                    ab illo inventore veritatis et quasi architecto beatae vitae dicta sunot explicabo. Nemo ernim ipsam
-                    voluptatem quia voluptas sit aspernatur aut odit aut fugit, sedopk quia consequuntur
-                    magni dolores eos qui rationesopl voluptatem sequi nesciunt. Neque porro quisquameo est, qui dolorem
-                    ipsum quia dolor sit amet, eopsmiep consectetur, adipisci velit, seisud quia non numquam eius modi
-                    tempora incidunt ut labore et dolore wopeir magnam aliquam quaerat voluptatem eoplmuriquisqu</p>
+                <p class="lead">PROJECT README</p>
+                <p class="card-text text-primary">
+                    {{ readme | safe }}
+                </p>
                 <p>Date Published: {{ current_project.published_date }}</p>
                 <p>View more about the project on GitHub at: <a
                         href="{{ current_project.url }}">{{ current_project.url }}</a></p>
@@ -69,7 +63,7 @@
                     <img src='{% static "images/usericon.png" %}' alt="Card image">
                 </div>
                 <div class="col-sm-8" style="margin: auto">
-                    <a href="../../users/{{ user.user_id}}/"
+                    <a href="../../users/{{ user.username }}/"
                         class="card-text project-member-name">{{ user.display_name}}, {{ user.pillar}}</a>
                 </div>
             </div>
@@ -79,7 +73,9 @@
         <div class="card project-tags card-no-border">
             <p class="text-primary" style="margin:0; margin-top: 20px">Related Tags:</p>
             {% for tag in current_project.tags.all %}
-            <span class="badge badge-pill badge-secondary project-badge-tags">{{ tag}}</span>
+            <div class="tag">
+                <a href="../../projects/search?title=&category=&tags__name={{ tag}}"><span class="badge badge-pill badge-secondary project-badge-tags">{{ tag}}</span></a>
+            </div>
             {% endfor %}
         </div>
     </div>
